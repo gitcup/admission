@@ -48,9 +48,7 @@
             </div>
             <hr class="my-4">
 <!--            <p>กรอกใบสมัครสอบออนไลน์</p>-->
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="frmselevel.php" role="button">กรอกใบสมัครสอบออนไลน์</a>
-            </p>
+         
             <div class="alert alert-dismissible alert-primary">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>** หมายเหตุ **</strong> <a href="#" class="alert-link"></a>

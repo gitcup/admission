@@ -14,7 +14,7 @@
     <body>
         <div class="jumbotron">
 
-            <strong class="strong"> ตรวจสถานะ / พิมพ์แบบฟอร์มการชำระเงิน / พิมพ์เอกสารการสมัคร</strong > 
+            <strong class="strong"> ค้นหารหัสผู้สมัครจากบัตรประชาชน</strong > 
             <hr>
 
             
@@ -28,11 +28,11 @@
  <!--           ตรวจข้อมูลผู้สมัคร-->
 
             <div class="row">
-                <form style="margin: 0 auto; width:250px;"action="find_applicantByciti.php" method="post" name="form1" id="form1">
+                <form style="margin: 0 auto; width:250px;"action="index.php?p=find_applicantByciti" method="post" name="form1" id="form1">
                     <div class="form-group">
                         <label for="exampleInputEmail1">รหัสประจำตัวบัตรประชาชน</label>
                         <input class="form-control" name="txt_citizen" type="text" id="txt_citizen" maxlength="13" >
-                        <small class="form-text text-muted"> * เฉพาะผู้ที่ทำการสมัครผ่านระบบออนไลน์ เท่านั้น</small>
+                        <small class="form-text text-muted" style="color: #ff3333;">  * ผู้ที่มาสมัคร ณ กองบริการการศึกษา ต้องรอเจ้าหน้าที่กรอกข้อมูลเข้าระบบถึงจะได้รับรหัสผู้สมัคร</small>
                     </div>
 
 

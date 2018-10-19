@@ -96,5 +96,5 @@ $p = $_GET["p"];
         </div>
 
     </body>
-    \
+    
 </html>
