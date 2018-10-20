@@ -1,4 +1,4 @@
-<?	session_start();
+<?php	session_start();
 $frommail = $_GET[m];
 if($frommail == 'true') 
 	{
@@ -8,10 +8,10 @@ if($frommail == 'true')
 		   }
 ?>
 
-<? include("config/connect.php");  ?>
-<? include("sysconfigqnew.php");  ?>
-<? $a2 = "200.00";	$a3 = "300.00";  $b2 = "สองร้อยบาทถ้วน";	$b3 = "สามร้อยบาทถ้วน"; ?>
-<? $strSQL = "SELECT PREFIX.PREFIXNAME, APPLICANT.APPLICANTCODE, APPLICANT.ACADYEAR, APPLICANT.SEMESTER, APPLICANT.ROUND, APPLICANT.APPLICANTNAME, APPLICANT.APPLICANTSURNAME,APPLICANT.APPLICANTTYPE, APPLICANT.HOMEPHONENO, APPLICANT.GPAX, SCHOOL.SCHOOLNAME, ENTRYDEGREE.ENTRYDEGREENAME, APPLICANT.APPLICANTID FROM ((avsreg.APPLICANT LEFT JOIN avsreg.PREFIX ON APPLICANT.PREFIXID = PREFIX.PREFIXID) LEFT JOIN avsreg.SCHOOL ON APPLICANT.SCHOOLID = SCHOOL.SCHOOLID) LEFT JOIN avsreg.ENTRYDEGREE ON APPLICANT.PROGRAMTYPE = ENTRYDEGREE.ENTRYDEGREECODE WHERE (((APPLICANT.APPLICANTID)='$applicantid') and ((APPLICANT.APPLICANTSTATUS)>='10'))";
+<?php include("config/connect.php");  ?>
+<?php include("sysconfigqnew.php");  ?>
+<?php $a2 = "200.00";	$a3 = "300.00";  $b2 = "สองร้อยบาทถ้วน";	$b3 = "สามร้อยบาทถ้วน"; ?>
+<?php $strSQL = "SELECT PREFIX.PREFIXNAME, APPLICANT.APPLICANTCODE, APPLICANT.ACADYEAR, APPLICANT.SEMESTER, APPLICANT.ROUND, APPLICANT.APPLICANTNAME, APPLICANT.APPLICANTSURNAME,APPLICANT.APPLICANTTYPE, APPLICANT.HOMEPHONENO, APPLICANT.GPAX, SCHOOL.SCHOOLNAME, ENTRYDEGREE.ENTRYDEGREENAME, APPLICANT.APPLICANTID FROM ((avsreg.APPLICANT LEFT JOIN avsreg.PREFIX ON APPLICANT.PREFIXID = PREFIX.PREFIXID) LEFT JOIN avsreg.SCHOOL ON APPLICANT.SCHOOLID = SCHOOL.SCHOOLID) LEFT JOIN avsreg.ENTRYDEGREE ON APPLICANT.PROGRAMTYPE = ENTRYDEGREE.ENTRYDEGREECODE WHERE (((APPLICANT.APPLICANTID)='$applicantid') and ((APPLICANT.APPLICANTSTATUS)>='10'))";
 $result = odbc_exec($objConnect, $strSQL) or die ("Error Execute [".$strSQL."]");
 while($objResult = odbc_fetch_row($result))
 	{
@@ -85,15 +85,15 @@ body {
       <tr>
         <th width="17%" scope="col"><img src="http://assess.rbru.ac.th/admission/images/logo3.png" width="67" height="87"></th>
         <th width="58%" scope="col"><div align="left" class="style3"><span class="style1">มหาวิทยาลัยราชภัฏรำไพพรรณี<br />
-            <span class="style2">ใบสมัครบุคคลเข้าศึกษาต่อ ประเภท<? if ($a_type == 'A') { echo "สอบคัดเลือก "; } 
+            <span class="style2">ใบสมัครบุคคลเข้าศึกษาต่อ ประเภท<?php if ($a_type == 'A') { echo "สอบคัดเลือก "; } 
 			if ($a_type == 'Q') { echo "โควตา"; } 
 			if ($a_type == 'C') { echo "รับตรง "; }
 			?>
 			
 			 หลักสูตรปริญญาตรี ภาคปกติ<br />
-          ประจำปีการศึกษา <? echo $acadyearin; ?> รอบที่ <? echo $roundin; ?> </span></span>Online</div></th>
+          ประจำปีการศึกษา <?php echo $acadyearin; ?> รอบที่ <?php echo $roundin; ?> </span></span>Online</div></th>
         <td width="25%" scope="col"><div align="right"><span class="style3">(ส่วนที่ 1 สำหรับผู้สมัคร)<br>
-          Ref.No. <? echo $filled_int = sprintf("%09d", $applicantid); ?><br>
+          Ref.No. <?php echo $filled_int = sprintf("%09d", $applicantid); ?><br>
         <br>
         </span></div></td>
       </tr>
@@ -104,19 +104,19 @@ body {
       <tr>
         <td scope="col"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="76%"><div align="left" class="style3">รหัสผู้สมัคร   &nbsp;&nbsp;<span class="text16 style2">&nbsp;<span class="style4">&nbsp;<? echo $applicantcode; ?>&nbsp;</span>&nbsp;</span>&nbsp;&nbsp;&nbsp;ชื่อผู้สมัคร&nbsp;&nbsp;&nbsp;<span class="style4">&nbsp;&nbsp;<? echo $prefixname.$applicantname; ?> &nbsp;<? echo $applicantsurname; ?>&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สขาวิชาที่เลือก.....</div></td>
-            <td width="24%"><div align="right"><span class="style3">&nbsp;วันที่พิมพ์ <? echo date('d/m/Y H:i');?></span></div></td>
+            <td width="76%"><div align="left" class="style3">รหัสผู้สมัคร   &nbsp;&nbsp;<span class="text16 style2">&nbsp;<span class="style4">&nbsp;<?php echo $applicantcode; ?>&nbsp;</span>&nbsp;</span>&nbsp;&nbsp;&nbsp;ชื่อผู้สมัคร&nbsp;&nbsp;&nbsp;<span class="style4">&nbsp;&nbsp;<?php echo $prefixname.$applicantname; ?> &nbsp;<?php echo $applicantsurname; ?>&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สขาวิชาที่เลือก.....</div></td>
+            <td width="24%"><div align="right"><span class="style3">&nbsp;วันที่พิมพ์ <?php echo date('d/m/Y H:i');?></span></div></td>
           </tr>
         </table></td>
       </tr>
-		<? $strSQL1 = "SELECT APPLICANTSELECTION.SEQUENCE, QUOTA.QUOTANAME
+		<?php $strSQL1 = "SELECT APPLICANTSELECTION.SEQUENCE, QUOTA.QUOTANAME
 FROM ((avsreg.APPLICANTSELECTION INNER JOIN avsreg.QUOTASTATUS ON APPLICANTSELECTION.QUOTASTATUSID = QUOTASTATUS.QUOTASTATUSID) INNER JOIN avsreg.QUOTA ON QUOTASTATUS.QUOTAID = QUOTA.QUOTAID) WHERE (((APPLICANTSELECTION.APPLICANTID)='$applicantid')) ORDER BY APPLICANTSELECTION.SEQUENCE";
 $result1 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."]");
 $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."]");
 	$Num_Rows = 0;
 			
 		?>
-		 <? 
+		 <?php 
 		  while($objResult1 = odbc_fetch_row($result1))
 		{
 		
@@ -142,7 +142,7 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
                   <td width="23%" bgcolor="#FFFFFF" class="style3"><div align="center">ลำดับที่ 1 : </div></td>
                   <td width="77%" bgcolor="#FFFFFF" class="style3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา : <? echo $q1; ?></td>
+                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา : <?php echo $q1; ?></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -150,7 +150,7 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
                   <td bgcolor="#FFFFFF" class="style3"><div align="center">ลำดับที่ 2 : </div></td>
                   <td bgcolor="#FFFFFF" class="style3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา :  <? if($q2 <> "") { echo $q2; } else { echo " - "; } ?></td>
+                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา :  <?php if($q2 <> "") { echo $q2; } else { echo " - "; } ?></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -162,7 +162,7 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
                   <td bgcolor="#FFFFFF" class="style3"><div align="center">ลำดับที่ 3 : </div></td>
                   <td bgcolor="#FFFFFF" class="style3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา : <? if($q3 <> "") { echo $q3; } else { echo " - "; } ?></td>
+                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา : <?php if($q3 <> "") { echo $q3; } else { echo " - "; } ?></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -170,7 +170,7 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
                   <td width="23%" bgcolor="#FFFFFF" class="style3"><div align="center">ลำดับที่ 4 : </div></td>
                   <td width="77%" bgcolor="#FFFFFF" class="style3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา :  <? if($q4 <> "") { echo $q4; } else { echo " - "; } ?></td>
+                        <td bgcolor="#FFFFFF" class="style3">&nbsp;&nbsp;สาขาวิชา :  <?php if($q4 <> "") { echo $q4; } else { echo " - "; } ?></td>
                       </tr>
                   </table></td>
                 </tr>
@@ -195,23 +195,23 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
               <br>
               <br>
             </span>
-			<? if($Num_Rows > 1) { $pa = $a3; $pb = $b3; $pc = 30000; } else { $pa = $a2; $pb = $b2; $pc = 20000;} ?>
+			<?php if($Num_Rows > 1) { $pa = $a3; $pb = $b3; $pc = 30000; } else { $pa = $a2; $pb = $b2; $pc = 20000;} ?>
               <p class="style3">* เก็บส่วนนี้ไว้เป็นหลักฐานการชำระเงิน * <br>
                 (กรุณาชำระเงินภายใน 3 วันทำการ 
                   หลังจากที่ยืนยันการสมัครเรียบร้อยแล้ว)<br>
                 (ภายในระยะเวลาการชำระเงิน)</p>
                 </td>
-            <td valign="top"><? echo "<div align='center' class='style3'>$pa</div>"; ?></td>
+            <td valign="top"><?php echo "<div align='center' class='style3'>$pa</div>"; ?></td>
           </tr>
           <tr>
-            <td colspan="2"><? echo "<div align='center' class='style5'>$pb</div>"; ?></td>
-            <td><? echo "<div align='center' class='style5'>$pa</div>";  ?></td>
+            <td colspan="2"><?php echo "<div align='center' class='style5'>$pb</div>"; ?></td>
+            <td><?php echo "<div align='center' class='style5'>$pa</div>";  ?></td>
           </tr>
         </table>
           <table width="100%" border="1" cellspacing="0" cellpadding="3">
             <tr>
               <td width="53%"><span class="style3"><strong>กำหนดชำระเงิน ระหว่างวันที่ 
-			  <? 
+			  <?php 
 			  	
 			    if(($a_type == 'Q') and ($roundin == "3")) { echo datethai($datemoneyfrom); echo " ถึง ".datethai($datemoneyto);
 			    } else 
@@ -246,7 +246,7 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
             <td width="50%"><span class="style3"><img src="http://assess.rbru.ac.th/admission/images/logo3.png" width="40" height="50" align="left"><span class="style7"> &nbsp;มหาวิทยาลัยราชภัฏรำไพพรรณี<br>
 &nbsp;Rambhai Barni Rajabhat University</span></span></td>
             <td width="50%"><div align="right" class="style3"><span class="style7">ใบแจ้งการชำระเงินค่าสมัครเข้าศึกษาต่อ</span><br>
-              กำหนดชำระเงินวันที่&nbsp;  <? 
+              กำหนดชำระเงินวันที่&nbsp;  <?php 
 			  	
 			    if(($a_type == 'Q') and ($roundin == "3")) { echo datethai($datemoneyfrom); echo " ถึง ".datethai($datemoneyto);
 			    } else 
@@ -272,13 +272,13 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
           <div align="center"><span class="style3 style8">(รับเฉพาะเงินสดเท่านั้น ไม่รวมค่าธรรมเนียม 10 บาท)</span></div></td>
         <td width="38%"><table width="100%" border="0" cellspacing="0" cellpadding="1">
           <tr>
-            <td><span class="style3 style6">ชื่อ / NAME : &nbsp;&nbsp;&nbsp;&nbsp;<? echo $prefixname.$applicantname; ?> &nbsp;<? echo $applicantsurname; ?>&nbsp;&nbsp;&nbsp;</span></td>
+            <td><span class="style3 style6">ชื่อ / NAME : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $prefixname.$applicantname; ?> &nbsp;<?php echo $applicantsurname; ?>&nbsp;&nbsp;&nbsp;</span></td>
           </tr>
           <tr>
-            <td class="style3 style6">รหัสผู้สมัคร/ REGIS NO. (Ref1) : <? echo $applicantcode; ?></td>
+            <td class="style3 style6">รหัสผู้สมัคร/ REGIS NO. (Ref1) : <?php echo $applicantcode; ?></td>
           </tr>
           <tr>
-            <td class="style3 style6">เลขที่อ้างอิง/ REF. NO. (Ref2) : <? echo $filled_int = sprintf("%09d", $applicantid); ?></td>
+            <td class="style3 style6">เลขที่อ้างอิง/ REF. NO. (Ref2) : <?php echo $filled_int = sprintf("%09d", $applicantid); ?></td>
           </tr>
           <tr>
             <td bgcolor="#CCCCCC" class="style3"><div align="center" class="style6">สำหรับเจ้าหน้าที่ธนาคาร/ Bank Use Only </div></td>
@@ -290,12 +290,12 @@ $result2 = odbc_exec($objConnect, $strSQL1) or die ("Error Execute [".$strSQL1."
           <tr>
             <td width="35%" class="style7"><p class="style5 style2"><strong>จำนวนเงินทั้งหมด</strong></p>              </td>
             <td width="65%" class="style7"><span class="style2">
-              <?  echo $pa;  ?>
+              <?php  echo $pa;  ?>
             </span></td>
           </tr>
           <tr>
             <td class="style5 style2">จำนวนเงินตัวอักษร</td>
-            <td class="style7"><span class="style2"><? echo $pb;  ?></span></td>
+            <td class="style7"><span class="style2"><?php echo $pb;  ?></span></td>
           </tr>
         </table>          </td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -319,9 +319,9 @@ Received By </span></td>
   <tr>
     <td valign="top" class="style3"><table width="100%" border="0" cellspacing="0" cellpadding="3">
       <tr>	  
-        <td width="62%" valign="top"><img src="barcode1d/test_1d.php?t=<? echo "|426100054000";?>&appcode=<? echo $sess_appcode;?>&ref2=<? echo $filled_int;?>&pc=<? echo $pc;?>"><? echo "|426100054000".$sess_appcode.$filled_int.$pc;?> </td>
-        <td width="38%" valign="top"><div align="right"><img src="barcode1d/test_2d.php?text=<? echo $sess_appcode; ?>"><br>
-          <? echo $sess_appcode; ?> </div></td>      </tr>
+        <td width="62%" valign="top"><img src="barcode1d/test_1d.php?t=<?php echo "|426100054000";?>&appcode=<?php echo $sess_appcode;?>&ref2=<?php echo $filled_int;?>&pc=<?php echo $pc;?>"><?php echo "|426100054000".$sess_appcode.$filled_int.$pc;?> </td>
+        <td width="38%" valign="top"><div align="right"><img src="barcode1d/test_2d.php?text=<?php echo $sess_appcode; ?>"><br>
+          <?php echo $sess_appcode; ?> </div></td>      </tr>
 
     </table></td>
   </tr>
