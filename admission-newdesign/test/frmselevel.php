@@ -22,11 +22,11 @@
                                         </td>
                                     </tr> 
                                     <tr>
-                                        <td align="left"><div align="center"><a href="frmRegister1qnew.php" class="btn btn-primary" role="button">ปริญญา <strong>ภาคปกติ </strong><br>ประเภทโควต้า</a></div></td> 
+                                        <td align="left"><div align="center"><a href="index.php?p=frmRegister1qnew" class="btn btn-primary" role="button">ปริญญา <strong>ภาคปกติ </strong><br>ประเภทโควต้า</a></div></td> 
                                     </tr>   
 
                                     <tr>
-                                        <td align="left"><div align="center"><a href="frmRegisterMas.php" class="btn btn-primary" role="button">ปริญญาโท , เอก <strong>ภาคพิเศษ </strong><br>บัณฑิตวิทยาลัย</a></div></td> 
+                                        <td align="left"><div align="center"><a href="index.php?p=frmRegisterMas" class="btn btn-primary" role="button">ปริญญาโท , เอก <strong>ภาคพิเศษ </strong><br>บัณฑิตวิทยาลัย</a></div></td> 
                                     </tr> 	
                                     <tr>
                                         <td align="center"><div class="alert alert-warning" role="alert" style="width:250px;">

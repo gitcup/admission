@@ -77,24 +77,24 @@ while ($objSEL = odbc_fetch_row($resultSEL)) {
             <label>คำนำหน้า : 
                 <select name="prename" id="prename" validate="required:true" class="required error">
                     <option value="">--- กรุณาเลือก ---</option>
-<?php
-$strSQL = "SELECT PREFIX.PREFIXNAME, PREFIX.PREFIXID FROM avsreg.PREFIX where (PREFIX.PREFIXID > 1 AND PREFIX.PREFIXID < 5) ORDER BY PREFIX.PREFIXID ASC";
-$result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-while (odbc_fetch_row($result)) {
-    $prefixid = odbc_result($result, "prefixid");
-    $prefixname = odbc_result($result, "prefixname");
-    $prefixname_cv = iconv("TIS-620", "UTF-8", "$prefixname");
-    $selected = "";
-    if ($prename == $prefixid) {
-        $selected = "selected=\"selected\"";
-    }
+                    <?php
+                    $strSQL = "SELECT PREFIX.PREFIXNAME, PREFIX.PREFIXID FROM avsreg.PREFIX where (PREFIX.PREFIXID > 1 AND PREFIX.PREFIXID < 5) ORDER BY PREFIX.PREFIXID ASC";
+                    $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+                    while (odbc_fetch_row($result)) {
+                        $prefixid = odbc_result($result, "prefixid");
+                        $prefixname = odbc_result($result, "prefixname");
+                        $prefixname_cv = iconv("TIS-620", "UTF-8", "$prefixname");
+                        $selected = "";
+                        if ($prename == $prefixid) {
+                            $selected = "selected=\"selected\"";
+                        }
 
-    echo "<option value=\"$prefixid\" $selected>$prefixname_cv</option>";
-}
-?>            
+                        echo "<option value=\"$prefixid\" $selected>$prefixname_cv</option>";
+                    }
+                    ?>            
                 </select>
             </label>
-            <table width="100%" border="0">
+            <table  border="0">
                 <tr>
                     <td>
                         <label>ชื่อ :  
@@ -120,20 +120,20 @@ while (odbc_fetch_row($result)) {
                             จังหวัด :
                             <select name="province" id="select" validate="required:true" class="required error">
 
-<?php
-$strSQL = "SELECT PROVINCE.PROVINCEID, PROVINCE.PROVINCENAME FROM AVSREG.PROVINCE ORDER BY PROVINCE.PROVINCENAME";
-$result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-while (odbc_fetch_row($result)) {
-    $provinceid = odbc_result($result, "provinceid");
-    $provincename = odbc_result($result, "provincename");
-    $provincename_cv = iconv("TIS-620", "UTF-8", "$provincename");
-    $selected = "";
-    if ($province == $provinceid) {
-        $selected = "selected=\"selected\"";
-    }
-    echo "<option value=\"$provinceid\" $selected>$provincename_cv</option>";
-}
-?>
+                                <?php
+                                $strSQL = "SELECT PROVINCE.PROVINCEID, PROVINCE.PROVINCENAME FROM AVSREG.PROVINCE ORDER BY PROVINCE.PROVINCENAME";
+                                $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+                                while (odbc_fetch_row($result)) {
+                                    $provinceid = odbc_result($result, "provinceid");
+                                    $provincename = odbc_result($result, "provincename");
+                                    $provincename_cv = iconv("TIS-620", "UTF-8", "$provincename");
+                                    $selected = "";
+                                    if ($province == $provinceid) {
+                                        $selected = "selected=\"selected\"";
+                                    }
+                                    echo "<option value=\"$provinceid\" $selected>$provincename_cv</option>";
+                                }
+                                ?>
                             </select> </label> </td>
                     <td> <label> รหัสไปรษณีย์ : <input name="zipcode" type="text" class="number" id="textfield" value="<?php echo $zipcode; ?>" size="10" maxlength="5" validate="required:true">  </label>   </td>  
                 </tr></table>
@@ -147,7 +147,8 @@ while (odbc_fetch_row($result)) {
                     </td></tr></table>
         </div>
 
-        <h3>ข้อมูลการศึกษา</h3>
+        <strong>ข้อมูลการศึกษา </strong>
+        <hr>
         <div class="mr20" >
             <label></label>
             <table>
@@ -155,37 +156,37 @@ while (odbc_fetch_row($result)) {
                         <label>วุฒิการศึกษาเดิม :
                             <select name="entrydegree" id="entrydegree" validate="required:true" class="required error">
                                 <option value="">--- กรุณาเลือก ---</option>
-<?php
-$strSQL = "SELECT ENTRYDEGREE.ENTRYDEGREECODE, ENTRYDEGREE.ENTRYDEGREENAME, ENTRYDEGREE.ENTRYDEGREEABB, ENTRYDEGREE.WEBENTRY
+                                <?php
+                                $strSQL = "SELECT ENTRYDEGREE.ENTRYDEGREECODE, ENTRYDEGREE.ENTRYDEGREENAME, ENTRYDEGREE.ENTRYDEGREEABB, ENTRYDEGREE.WEBENTRY
 									FROM avsreg.ENTRYDEGREE WHERE (((ENTRYDEGREE.WEBENTRY)= 1))";
-$result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-while (odbc_fetch_row($result)) {
-    $degreeid = odbc_result($result, "entrydegreecode");
-    $degreename = odbc_result($result, "entrydegreename");
-    $degreeabb = odbc_result($result, "entrydegreeabb");
-    $degreename_cv = iconv("TIS-620", "UTF-8", "$degreename");
-    $degreeabb_cv = iconv("TIS-620", "UTF-8", "$degreeabb");
-    $selected = "";
-    if ($programtype == $degreeid) {
-        $selected = "selected=\"selected\"";
-    }
-    echo "<option value=\"$degreeid\" $selected>$degreeabb_cv : $degreename_cv</option>";
-}
-?>
+                                $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+                                while (odbc_fetch_row($result)) {
+                                    $degreeid = odbc_result($result, "entrydegreecode");
+                                    $degreename = odbc_result($result, "entrydegreename");
+                                    $degreeabb = odbc_result($result, "entrydegreeabb");
+                                    $degreename_cv = iconv("TIS-620", "UTF-8", "$degreename");
+                                    $degreeabb_cv = iconv("TIS-620", "UTF-8", "$degreeabb");
+                                    $selected = "";
+                                    if ($programtype == $degreeid) {
+                                        $selected = "selected=\"selected\"";
+                                    }
+                                    echo "<option value=\"$degreeid\" $selected>$degreeabb_cv : $degreename_cv</option>";
+                                }
+                                ?>
                             </select></label></td>
                     <td> <label>&nbsp;เกรดเฉลี่ยสะสม :
                             <input name="gpa" type="text" class="required error" id="gpa" value="<?php echo $gpax; ?>" size="10" maxlength="4" validate="required:true" />
                         </label>
                     </td></tr></table>
-                                <?php
-                                $strSQL = "SELECT SCHOOL.SCHOOLID, SCHOOL.SCHOOLNAME FROM avsreg.SCHOOL WHERE (((SCHOOL.SCHOOLID)='$schoolid'))";
-                                $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-                                while (odbc_fetch_row($result)) {
-                                    $schoolid = odbc_result($result, "schoolid");
-                                    $schoolname = odbc_result($result, "schoolname");
-                                    $schoolname_cv = iconv("TIS-620", "UTF-8", "$schoolname");
-                                }
-                                ?>
+            <?php
+            $strSQL = "SELECT SCHOOL.SCHOOLID, SCHOOL.SCHOOLNAME FROM avsreg.SCHOOL WHERE (((SCHOOL.SCHOOLID)='$schoolid'))";
+            $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+            while (odbc_fetch_row($result)) {
+                $schoolid = odbc_result($result, "schoolid");
+                $schoolname = odbc_result($result, "schoolname");
+                $schoolname_cv = iconv("TIS-620", "UTF-8", "$schoolname");
+            }
+            ?>
             <label class="label2">สถาบันเดิมที่จบ
                 <input name="txtSCHOOLID_1" type="hidden" id="txtSCHOOLID_1" value="<?php echo $schoolid ?>"/>
                 :
@@ -193,7 +194,8 @@ while (odbc_fetch_row($result)) {
                 <input type="button" name="btnPopup_12"  id="btnPopup_12" value="...คลิก..." onclick="OpenPopupSchool(1)" />
             </label>
         </div>
-        <h3>สาขาวิชาที่เลือก</h3>
+        <strong>สาขาวิชาที่เลือก </strong>
+        <hr>
         <div class="mr20" >
             <label>
                 <table>
@@ -204,24 +206,24 @@ while (odbc_fetch_row($result)) {
                         <td><div align="center">ระดับ</div></td>
                         <td><div align="center"></div></td>
                     </tr>
-<?php
-$strSQL = "SELECT APPLICANTSELECTION.APPLICANTID, QUOTA.QUOTACODE, QUOTA.LEVELID, QUOTASTATUS.MINGPAX, QUOTA.QUOTANAME, LEVELID.LEVELABB, APPLICANTSELECTION.SEQUENCE, APPLICANTSELECTION.QUOTASTATUSID FROM ((avsreg.APPLICANTSELECTION INNER JOIN avsreg.QUOTASTATUS ON APPLICANTSELECTION.QUOTASTATUSID = QUOTASTATUS.QUOTASTATUSID) INNER JOIN avsreg.QUOTA ON QUOTASTATUS.QUOTAID = QUOTA.QUOTAID) INNER JOIN avsreg.LEVELID ON QUOTA.LEVELID = LEVELID.LEVELID WHERE (((APPLICANTSELECTION.APPLICANTID)='$applicantid') and ((APPLICANTSELECTION.SEQUENCE)='1')) ORDER BY APPLICANTSELECTION.SEQUENCE";
-$result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-while (odbc_fetch_row($result)) {
-    $quotastatusid1 = odbc_result($result, "quotastatusid");
-    $quotacode1 = odbc_result($result, "quotacode");
-    $quotaname1 = odbc_result($result, "quotaname");
-    $levelabb1 = odbc_result($result, "levelabb");
-    $sequence = odbc_result($result, "sequence");
-    $mingpa = odbc_result($result, "MINGPAX");
-    $levelid = odbc_result($result, "levelid");
-    $quotaname1_cv = iconv("TIS-620", "UTF-8", "$quotaname1");
-    $levelabb1_cv = iconv("TIS-620", "UTF-8", "$levelabb1");
+                    <?php
+                    $strSQL = "SELECT APPLICANTSELECTION.APPLICANTID, QUOTA.QUOTACODE, QUOTA.LEVELID, QUOTASTATUS.MINGPAX, QUOTA.QUOTANAME, LEVELID.LEVELABB, APPLICANTSELECTION.SEQUENCE, APPLICANTSELECTION.QUOTASTATUSID FROM ((avsreg.APPLICANTSELECTION INNER JOIN avsreg.QUOTASTATUS ON APPLICANTSELECTION.QUOTASTATUSID = QUOTASTATUS.QUOTASTATUSID) INNER JOIN avsreg.QUOTA ON QUOTASTATUS.QUOTAID = QUOTA.QUOTAID) INNER JOIN avsreg.LEVELID ON QUOTA.LEVELID = LEVELID.LEVELID WHERE (((APPLICANTSELECTION.APPLICANTID)='$applicantid') and ((APPLICANTSELECTION.SEQUENCE)='1')) ORDER BY APPLICANTSELECTION.SEQUENCE";
+                    $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+                    while (odbc_fetch_row($result)) {
+                        $quotastatusid1 = odbc_result($result, "quotastatusid");
+                        $quotacode1 = odbc_result($result, "quotacode");
+                        $quotaname1 = odbc_result($result, "quotaname");
+                        $levelabb1 = odbc_result($result, "levelabb");
+                        $sequence = odbc_result($result, "sequence");
+                        $mingpa = odbc_result($result, "MINGPAX");
+                        $levelid = odbc_result($result, "levelid");
+                        $quotaname1_cv = iconv("TIS-620", "UTF-8", "$quotaname1");
+                        $levelabb1_cv = iconv("TIS-620", "UTF-8", "$levelabb1");
 
-    $_SESSION["quotastatus_sess1"] = $quotastatusid1;
-    $quotastatusid1 = $_SESSION["quotastatus_sess1"];
-}
-?>
+                        $_SESSION["quotastatus_sess1"] = $quotastatusid1;
+                        $quotastatusid1 = $_SESSION["quotastatus_sess1"];
+                    }
+                    ?>
                     <!-- Rows 1 -->
                     <tr>
                         <td><div align="center">1
@@ -252,20 +254,20 @@ while (odbc_fetch_row($result)) {
                     </tr>
 
                     <!-- Rows 2 -->
-<?php
-$strSQL = "SELECT APPLICANTSELECTION.APPLICANTID, QUOTA.QUOTACODE, QUOTA.QUOTANAME, LEVELID.LEVELABB, APPLICANTSELECTION.SEQUENCE, APPLICANTSELECTION.QUOTASTATUSID FROM ((avsreg.APPLICANTSELECTION INNER JOIN avsreg.QUOTASTATUS ON APPLICANTSELECTION.QUOTASTATUSID = QUOTASTATUS.QUOTASTATUSID) INNER JOIN avsreg.QUOTA ON QUOTASTATUS.QUOTAID = QUOTA.QUOTAID) INNER JOIN avsreg.LEVELID ON QUOTA.LEVELID = LEVELID.LEVELID WHERE (((APPLICANTSELECTION.APPLICANTID)='$applicantid') and ((APPLICANTSELECTION.SEQUENCE)='2')) ORDER BY APPLICANTSELECTION.SEQUENCE";
-$result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
-while (odbc_fetch_row($result)) {
-    $quotastatusid2 = odbc_result($result, "quotastatusid");
-    $quotacode2 = odbc_result($result, "quotacode");
-    $quotaname2 = odbc_result($result, "quotaname");
-    $levelabb2 = odbc_result($result, "levelabb");
-    $sequence = odbc_result($result, "sequence");
+                    <?php
+                    $strSQL = "SELECT APPLICANTSELECTION.APPLICANTID, QUOTA.QUOTACODE, QUOTA.QUOTANAME, LEVELID.LEVELABB, APPLICANTSELECTION.SEQUENCE, APPLICANTSELECTION.QUOTASTATUSID FROM ((avsreg.APPLICANTSELECTION INNER JOIN avsreg.QUOTASTATUS ON APPLICANTSELECTION.QUOTASTATUSID = QUOTASTATUS.QUOTASTATUSID) INNER JOIN avsreg.QUOTA ON QUOTASTATUS.QUOTAID = QUOTA.QUOTAID) INNER JOIN avsreg.LEVELID ON QUOTA.LEVELID = LEVELID.LEVELID WHERE (((APPLICANTSELECTION.APPLICANTID)='$applicantid') and ((APPLICANTSELECTION.SEQUENCE)='2')) ORDER BY APPLICANTSELECTION.SEQUENCE";
+                    $result = odbc_exec($objConnect, $strSQL) or die("Error Execute [" . $strSQL . "]");
+                    while (odbc_fetch_row($result)) {
+                        $quotastatusid2 = odbc_result($result, "quotastatusid");
+                        $quotacode2 = odbc_result($result, "quotacode");
+                        $quotaname2 = odbc_result($result, "quotaname");
+                        $levelabb2 = odbc_result($result, "levelabb");
+                        $sequence = odbc_result($result, "sequence");
 
-    $quotaname2_cv = iconv("TIS-620", "UTF-8", "$quotaname2");
-    $levelabb2_cv = iconv("TIS-620", "UTF-8", "$levelabb2");
-}
-?>
+                        $quotaname2_cv = iconv("TIS-620", "UTF-8", "$quotaname2");
+                        $levelabb2_cv = iconv("TIS-620", "UTF-8", "$levelabb2");
+                    }
+                    ?>
                      <!-- <tr>
                         <td><div align="center">2
                           <input name="txtQUOTASTATUSID_2" type="hidden" id="txtQUOTASTATUSID_2" value="<? echo $quotastatusid2; ?>" />
@@ -331,7 +333,7 @@ while (odbc_fetch_row($result)) {
 
     </div>
 
-   
+
 
 
 

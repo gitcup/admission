@@ -68,12 +68,7 @@ include("config/connect.php");
     </head>
 
 
-    <?php
-    include './header.php';
-    ?>
-    <?php
-    include './navbar.php';
-    ?>
+    
     <body>
         <div class="jumbotron">
 
@@ -162,7 +157,7 @@ include("config/connect.php");
 
                 </div>
 
-                <h3>ข้อมูลการศึกษา</h3>
+                <strong >ข้อมูลการศึกษา</strong >
                 <div class="mr20" >
                     <label></label>
                     <table>
@@ -205,7 +200,7 @@ include("config/connect.php");
                     </label>
                     <label></label>
                 </div>
-                <h3>สาขาวิชาที่เลือก (เลือกได้ 1 สาขาวิชา) </h3>
+                <strong >สาขาวิชาที่เลือก (เลือกได้ 1 สาขาวิชา)</strong >
                 <div class="mr20" >
                     <label>
                         <table>
@@ -274,7 +269,7 @@ include("config/connect.php");
                     
                 <div class="center">
                     <label class="label2">
-                        <input class="btn-primary" type="submit" name="submit" id="bt" value="ตกลง"/>
+                        <input class="btn btn-primary" type="submit" name="submit" id="bt" value="ตกลง"/>
                     </label>
                     <label  class="label2">
                         <input class="btn-light" type="reset" name="reset" id="bt" value="ยกเลิก" />
