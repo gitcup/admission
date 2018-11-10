@@ -1,0 +1,35 @@
+.style1 {font-size: 14px}
+.style2 {font-size: 12px}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.style3 {
+	font-family: "Cordia New";
+	font-size: 14px;
+}
+#Layer1 {
+	position:absolute;
+	left:812px;
+	top:9px;
+	width:89px;
+	height:101px;
+	z-index:1;
+	background-color: #999999;
+}
+.style4 {font-size: 14px}
+.style5 {font-family: "Cordia New"; font-weight: bold; }
+.style7 {font-size: 14px; font-weight: bold; }
+
+   @page 
+    {
+        size: auto;   /* auto is the initial value */
+        margin: 5mm;  /* this affects the margin in the printer settings */
+    }
+    
+    <!--
+.style6 {font-size: 12px}
+.style8 {font-size: 12px}
+-->
